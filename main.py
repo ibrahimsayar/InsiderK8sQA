@@ -32,18 +32,6 @@ def main():
     label_selector = "app=test-case"
     test_case_pod_name = waiting_for_pods(label_selector)
     print("Test case running...")
-    exec_command = ["python3", "-u", "./test-case.py"]
-    response = stream.stream(
-        v1.connect_get_namespaced_pod_exec,
-        test_case_pod_name,
-        namespace="default",
-        command=exec_command,
-        stderr=True,
-        stdin=False,
-        stdout=True,
-        tty=False
-    )
-    print("çıktı:", response)
 
 
 if __name__ == "__main__":

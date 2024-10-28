@@ -7,6 +7,7 @@ import unittest
 from selenium.webdriver.support import expected_conditions as EC
 import sys
 import logging
+
 logging.basicConfig(filename='test_results.log', level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -55,8 +56,6 @@ class InsiderWebsiteTest(unittest.TestCase):
         self.assertFalse(life_at_insider is None, 'LIFE_AT_INSIDER_BLOCK_NOT_FOUND')
 
         logging.info(f"{self._testMethodName} - Career page loaded successfully.")
-
-
 
     def test_3_list_the_qa_positions(self):
         self.driver.get('https://useinsider.com/careers/quality-assurance/')
@@ -119,7 +118,7 @@ def run_tests():
     result = runner.run(suite)
     if result.wasSuccessful():
         logging.info("All tests passed.")
-        sys.exit(1)
+        #sys.exit(1)
     else:
         logging.error("Some tests failed.")
         sys.exit(0)
