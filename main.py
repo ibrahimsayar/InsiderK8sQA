@@ -32,31 +32,31 @@ def main():
     label_selector = "app=test-case"
     test_case_pod_name = waiting_for_pods(label_selector)
     print(test_case_pod_name)
-    # print("Test case running...")
-    # exec_command = ["python3", "-u", "./test-case.py"]
-    # response = stream.stream(
-    #     v1.connect_get_namespaced_pod_exec,
-    #     test_case_pod_name,
-    #     namespace="default",
-    #     command=exec_command,
-    #     stderr=True,
-    #     stdin=False,
-    #     stdout=True,
-    #     tty=False
-    # )
-    # time.sleep(60)
-    # cat_command = ["cat", "./test_results.log"]
-    # log = stream.stream(
-    #     v1.connect_get_namespaced_pod_exec,
-    #     test_case_pod_name,
-    #     namespace="default",
-    #     command=cat_command,
-    #     stderr=True,
-    #     stdin=False,
-    #     stdout=True,
-    #     tty=False
-    # )
-    # print(log)
+    print("Test case running...")
+    exec_command = ["python3", "-u", "./test-case.py"]
+    response = stream.stream(
+        v1.connect_get_namespaced_pod_exec,
+        test_case_pod_name,
+        namespace="default",
+        command=exec_command,
+        stderr=True,
+        stdin=False,
+        stdout=True,
+        tty=False
+    )
+    time.sleep(60)
+    cat_command = ["cat", "./test_results.log"]
+    log = stream.stream(
+        v1.connect_get_namespaced_pod_exec,
+        test_case_pod_name,
+        namespace="default",
+        command=cat_command,
+        stderr=True,
+        stdin=False,
+        stdout=True,
+        tty=False
+    )
+    print(log)
 
 
 if __name__ == "__main__":
