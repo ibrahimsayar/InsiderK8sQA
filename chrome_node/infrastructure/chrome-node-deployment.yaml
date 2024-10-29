@@ -57,22 +57,3 @@ spec:
       targetPort: 4444
       name: hub
   type: ClusterIP
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: selenium-service
-  labels:
-    app: selenium
-spec:
-  selector:
-    app: selenium
-  ports:
-    - port: 4444
-      targetPort: 4444
-      name: hub
-    - port: 5555
-      targetPort: 5555
-      name: node-chrome
-  type: ClusterIP
