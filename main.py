@@ -6,7 +6,7 @@ api_client = client.ApiClient()
 v1 = client.CoreV1Api()
 
 node_chrome_yaml_file = "./chrome_node/infrastructure/chrome-node-deployment.yaml"
-test_case_yaml_file = "./test_controller/infrastructure/test-controller-deployment.yaml"
+test_case_yaml_file = "./test_node/infrastructure/test-controller-deployment.yaml"
 
 utils.create_from_yaml(api_client, node_chrome_yaml_file)
 
