@@ -7,5 +7,4 @@ RUN apt-get update && \
 RUN pip3 install --no-cache-dir -r requirements.txt
 EXPOSE 80
 EXPOSE 443
-
 CMD ["python", "-u", "./test-case.py", "-v"]
