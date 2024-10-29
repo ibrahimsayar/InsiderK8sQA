@@ -20,8 +20,11 @@ class InsiderWebsiteTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         options = Options()
-        options.add_argument('--window-size=1920,1080')
+        options.add_argument('--start-maximized')
         options.add_argument('--headless')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
         cls.driver = webdriver.Remote('http://selenium-service:4444/wd/hub', options=options)
         cls.driver.get('https://useinsider.com/')
         cls.driver.set_page_load_timeout(20)
