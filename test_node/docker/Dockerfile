@@ -1,6 +1,6 @@
 FROM python:3
 WORKDIR /usr/src/app
-COPY ./test_controller/docker ./
+COPY ./test_node/docker ./
 RUN apt-get update && \
     apt-get install -y --no-install-recommends vim procps && \
     rm -rf /var/lib/apt/lists/*
