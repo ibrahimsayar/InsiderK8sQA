@@ -14,10 +14,8 @@ spec:
     spec:
       containers:
         - name: test-case-container
-          image: 975050196742.dkr.ecr.eu-central-1.amazonaws.com/insider/test-case:latest
+          image: public.ecr.aws/a5i9j0w3/insider-public-repository/test-case:latest
           command: ['sh', '-c', 'echo The app is running! && sleep 3600']
           ports:
             - containerPort: 80
             - containerPort: 443
-      imagePullSecrets:
-        - name: regcred
