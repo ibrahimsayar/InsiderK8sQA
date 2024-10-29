@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: selenium-pod
+  name: selenium-standalone
   labels:
     app: selenium
 spec:
@@ -19,39 +19,44 @@ spec:
           emptyDir:
             medium: Memory
       containers:
-        - name: selenium-hub
-          image: selenium/hub:4.0
+        - name: selenium-standalone-chrome
+          image: selenium/standalone-chrome:latest
           ports:
             - containerPort: 4444
-            - containerPort: 4443
-            - containerPort: 4442
+          volumeMounts:
+            - mountPath: /dev/shm
+              name: dshm
           livenessProbe:
             httpGet:
               path: /wd/hub/status
               port: 4444
-            initialDelaySeconds: 40
+            initialDelaySeconds: 30
+            periodSeconds: 10
             timeoutSeconds: 5
+            failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /wd/hub/status
               port: 4444
-            initialDelaySeconds: 40
+            initialDelaySeconds: 30
+            periodSeconds: 10
             timeoutSeconds: 5
-
-        - name: selenium-node-chrome
-          image: selenium/node-chrome:latest
-          ports:
-            - containerPort: 5555
-          volumeMounts:
-            - mountPath: /dev/shm
-              name: dshm
-          env:
-            - name: SE_EVENT_BUS_HOST
-              value: "localhost"
-            - name: SE_EVENT_BUS_SUBSCRIBE_PORT
-              value: "4443"
-            - name: SE_EVENT_BUS_PUBLISH_PORT
-              value: "4442"
+            failureThreshold: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: selenium-service
+  labels:
+    app: selenium
+spec:
+  selector:
+    app: selenium
+  ports:
+    - port: 4444
+      targetPort: 4444
+      name: hub
+  type: ClusterIP
 
 ---
 apiVersion: v1
