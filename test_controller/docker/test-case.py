@@ -24,6 +24,8 @@ class InsiderWebsiteTest(unittest.TestCase):
         options.add_argument('--headless')
         cls.driver = webdriver.Remote('http://selenium-service:4444/wd/hub', options=options)
         cls.driver.get('https://useinsider.com/')
+        cls.driver.set_page_load_timeout(20)
+        cls.driver.implicitly_wait(10)
 
     def test_1_check_home_page_load(self):
         expected_title = '#1 Leader in Individualized, Cross-Channel CX — Insider'
