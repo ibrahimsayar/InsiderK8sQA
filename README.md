@@ -57,7 +57,7 @@ Servisler aslında iki uçtaki iletişimi farklı yöntemlerle gerçekleştiren 
 ```
 InsiderK8sQA/
 ├── requirements.txt                                    # main.py scriptinin çalışması için gerekli olan kütüphaneler
-├── test_and_chrome_node_pod_and_log_screenshot.png     # Podların ayakta olduğunu ve test çıktılarını gösteren ekran resmi
+├── test_and_chrome_node_pod_and_log_screenshot     # Podların ayakta olduğunu ve test çıktılarını gösteren ekran resmi
 ├── README.md                                           # Readme.md
 ├── .gitignore                                          # Repository'e göndermememiz gereken gereksiz dosyaları belirttiğimiz dosya
 ├── main.py                                             # Podların uygulanması, ayağa kalkması, testlerini yapıp loglarını okuduğumuz ana script
@@ -76,6 +76,7 @@ InsiderK8sQA/
 │       ├── kubernetes-management-instance-key.pem      # EC2'ya bağlantı sağlamk için pem dosyası
 ├── /structure
 │   └── README.md                                       # Test ve diğer yapıyı açıkladığım dosya
+├── test-case-deployment-screenshot                     # Deployment bilgilerini gösteren ekran görüntüsü
 ```
 ## Karşılaşılan Problemler ve Ek Bilgi
 - Chrome podunu ayağa kaldırırken bir docker image görüntüsüne ihtiyacım olmadı çünkü direkt olarak public bir repository'den çalışacağım image'a ulaşabiliyordum
