@@ -74,6 +74,8 @@ InsiderK8sQA/
 ├── /assets
 │   └── /EC2
 │       ├── kubernetes-management-instance-key.pem      # EC2'ya bağlantı sağlamk için pem dosyası
+├── /structure
+│   └── README.md                                       # Test ve diğer yapıyı açıkladığım dosya
 ```
 ## Karşılaşılan Problemler ve Ek Bilgi
 - Chrome podunu ayağa kaldırırken bir docker image görüntüsüne ihtiyacım olmadı çünkü direkt olarak public bir repository'den çalışacağım image'a ulaşabiliyordum
